@@ -1,0 +1,43 @@
+<div class="p-4 bg-white">
+  <h2 class="mb-4 text-xl">Game is on!</h2>
+
+  <div>
+    <h3 class="mb-2">
+      It's your turn <span class="font-bold">{{ currentPlayerTurn() }}</span>
+    </h3>
+    <div>
+      <div class="flex-grow">
+        <mat-form-field class="w-full">
+          <mat-label>Score</mat-label>
+          <input
+            type="number"
+            [max]="100"
+            matInput
+            [(ngModel)]="scoreInput"
+            (ngModelChange)="score.set($event)"
+          />
+        </mat-form-field>
+      </div>
+
+      <div>
+        <button
+          mat-raised-button
+          mat-button
+          class="text-l"
+          (click)="nextTurn()"
+        >
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Remove player"
+            fontIcon="delete_forever"
+          ></mat-icon>
+          Next player
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="p-4 bg-white">
+  <app-score-board></app-score-board>
+</div>

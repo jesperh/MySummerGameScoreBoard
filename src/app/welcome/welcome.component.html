@@ -1,0 +1,78 @@
+<!-- <div class="text-center p-4 mb-4 bg-white">
+  <h1 class="text-3xl font-bold">Welcome To My Summer Game Score Board</h1>
+</div> -->
+
+<div class="p-4 bg-white">
+  <h2 class="text-3xl font-bold mb-4">Welcome To My Summer Game Score Board</h2>
+  <h2 class="mb-4 text-xl">Now let's set the settings</h2>
+  <form [formGroup]="settingsForm">
+    <!-- Players -->
+    <div class="mb-4 p-4 border border-gray-500">
+      <h3 class="text-lg mb-2">Players:</h3>
+      <div id="players" class="">
+        <ng-container formArrayName="players">
+          <ng-container *ngFor="let player of players.controls; let i = index">
+            <div class="flex items-center" [formGroupName]="i">
+              <div class="flex-grow">
+                <mat-form-field class="w-full">
+                  <mat-label>Player name {{ i + 1 }}</mat-label>
+                  <input matInput formControlName="name" />
+                </mat-form-field>
+              </div>
+              <div>
+                <button mat-button class="text-l" (click)="removePlayer(i)">
+                  <mat-icon
+                    aria-hidden="false"
+                    aria-label="Remove player"
+                    fontIcon="delete_forever"
+                  ></mat-icon>
+                </button>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+        <div id="add-player">
+          <button (click)="addPlayer()" mat-raised-button>
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Add a new player"
+              fontIcon="add_circle"
+            ></mat-icon>
+            Add a player
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Misc settings -->
+    <div class="mb-4 p-4 border border-gray-500">
+      <h3 class="text-lg mb-2">Game settings:</h3>
+      <div class="mb-4">
+        <div>
+          <mat-form-field class="w-2/3">
+            <mat-label>Max score</mat-label>
+            <input type="number" matInput formControlName="maxScore" min="0" />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="w-2/3">
+            <mat-label>Penalty setback score</mat-label>
+            <input
+              type="number"
+              matInput
+              formControlName="resetToScore"
+              min="0"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="text-lg text-center mb-2">Ready?</h3>
+    <div class="flex justify-center">
+      <button class="w-64 bg-green-500" mat-flat-button (click)="startGame()">
+        Start game
+      </button>
+    </div>
+  </form>
+</div>

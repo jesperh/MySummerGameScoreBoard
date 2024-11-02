@@ -1,0 +1,21 @@
+<h2 class="mb-2 text-xl">Scores</h2>
+<table class="w-full table-auto">
+  <thead>
+    <tr class="">
+      <th class="text-left">Round</th>
+      @for (player of players(); let i = $index; track $index ){
+      <th class="text-left">{{ player }}</th>
+      }
+    </tr>
+  </thead>
+  <tbody>
+    @for (round of score(); let i = $index; track $index ){
+    <tr>
+      <td>{{ i + 1 }}</td>
+      @for (players of round; let j = $index; track $index ){
+      <td>{{ players.score }}</td>
+      }
+    </tr>
+    }
+  </tbody>
+</table>
