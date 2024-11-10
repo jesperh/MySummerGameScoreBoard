@@ -89,7 +89,7 @@ export class GameService {
     const numColumns = this.scores()[0].length;
     const playerScores = new Array(numColumns).fill(0);
 
-    for (let row of this.scores()) {
+    for (const row of this.scores()) {
       for (let i = 0; i < numColumns; i++) {
         playerScores[i] += row[i]?.score ?? 0;
       }
@@ -98,8 +98,6 @@ export class GameService {
     const winner = index >= 0 ? this.players()[index] : null;
     return winner;
   });
-
-  constructor() {}
 
   setPlayers(players: { name: string }[]) {
     console.log(players);
