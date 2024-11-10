@@ -91,7 +91,7 @@ export class GameService {
 
     for (const row of this.scores()) {
       for (let i = 0; i < numColumns; i++) {
-        playerScores[i] += row[i]?.score ?? 0;
+        playerScores[i] += (row[i]?.score ?? 0) - (row[i]?.penalty ?? 0);
       }
     }
     const index = playerScores.findIndex((x) => x >= this.settings.maxScore);
