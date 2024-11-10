@@ -3,7 +3,7 @@
 
   <div>
     <h3 class="mb-2">
-      It's your turn <span class="font-bold">{{ currentPlayerTurn() }}</span>
+      It's your turn <span class="font-bold">{{ currentPlayerTurn }}</span>
     </h3>
     <div>
       <div class="flex-grow">
@@ -14,10 +14,11 @@
             [max]="100"
             matInput
             [(ngModel)]="scoreInput"
-            (ngModelChange)="score.set($event)"
+            (ngModelChange)="setScore($event)"
           />
         </mat-form-field>
       </div>
+      <h2>{{ score() }}</h2>
 
       <div>
         <button
@@ -38,6 +39,15 @@
   </div>
 </div>
 
+@if(gameService.winner()) {
+<div class="p-4 bg-white">
+  <h2 class="text-3xl font-bold mb-4">Game Over!</h2>
+  <h3 class="text-xl mb-4">
+    The winner is <span class="font-bold">{{ gameService.winner() }}</span>
+  </h3>
+  <button mat-raised-button>Restart game</button>
+</div>
+}
 <div class="p-4 bg-white">
   <app-score-board></app-score-board>
 </div>

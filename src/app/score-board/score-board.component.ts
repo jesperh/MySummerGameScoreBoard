@@ -13,4 +13,13 @@ export class ScoreBoardComponent {
 
   score = this.gameService.getScore();
   players = this.gameService.getPlayers();
+
+  getPlayerTotalScore = (index: number) =>
+    this.score().reduce((acc, row) => {
+      return acc + (row[index] ? row[index].score - row[index].penalty : 0);
+    }, 0);
+
+  roundHasPenalty = (round: number) => {
+    return this.score()[round].some((x) => x?.penalty);
+  };
 }

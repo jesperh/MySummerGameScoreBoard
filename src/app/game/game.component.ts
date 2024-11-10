@@ -32,15 +32,17 @@ export class GameComponent {
   gameService = inject(GameService);
   scoreInput: number = 0;
 
-  score = this.gameService.getCurrentScore();
-  players = this.gameService.getPlayers();
-
-  currentPLayerIndex = this.gameService.getCurrentPlayerIndex();
-  currentPlayerTurn = this.gameService.getCurrentPlayerTurn();
+  score = this.gameService.currentScoreForDisplay;
+  currentPLayerIndex = this.gameService.currentPlayerIndexForDisplay();
+  currentPlayerTurn = this.gameService.currentPlayerTurnForDisplay();
 
   nextTurn() {
     this.gameService.nextTurn();
     this.scoreInput = 0;
+  }
+
+  setScore(score: number) {
+    this.gameService.setCurrentScore(score);
   }
 
   constructor() {}

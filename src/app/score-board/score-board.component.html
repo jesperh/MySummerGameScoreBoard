@@ -16,6 +16,22 @@
       <td>{{ players.score }}</td>
       }
     </tr>
-    }
+    @if (roundHasPenalty(i)) {
+    <tr>
+      <td></td>
+      @for (players of round; let j = $index; track $index ){
+      @if(players.penalty > 0) {
+      <td class="text-red-500">-{{ players.penalty }}</td>
+      } }
+    </tr>
+    } }
   </tbody>
+  <tfoot>
+    <tr class="border-t border-gray-500">
+      <td>Total</td>
+      @for (player of players(); let i = $index; track $index ){
+      <td>{{ getPlayerTotalScore(i) }}</td>
+      }
+    </tr>
+  </tfoot>
 </table>
